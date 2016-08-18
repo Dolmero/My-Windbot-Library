@@ -91,13 +91,14 @@ function naturalsell(cat)
 	foreach lootingitem l cat do
 		table.insert(selllist, l)
 	end
-	table.soirt(spelllist, function(a,b) return tradecount('sell', a.id) > tradecount('sell', b.id) end)
+	table.sort(selllist, function(a,b) return tradecount('sell', a.id) > tradecount('sell', b.id) end)
 	for _, v in ipairs(selllist) do
 		sellitems(v.id, tradecount('sell', v.id))
 		wait($ping*3,$ping*5)
 	end
 end
 
+-- NOT TESTED
 -- @name	togglepause
 -- @desc	toggles pause
 function togglepause()
